@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS Link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Animated Background */
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #f8f9fa; /* light grey */
+            }
+            25% {
+                background-color: #4e73df; /* blue */
+            }
+            50% {
+                background-color: #1cc88a; /* green */
+            }
+            75% {
+                background-color: #36b9cc; /* light blue */
+            }
+            100% {
+                background-color: #f8f9fa; /* back to light grey */
+            }
+        }
+
+        /* Apply the background animation */
+        body {
+            animation: backgroundAnimation 10s infinite alternate; /* Change background every 10s */
+            background-size: cover;
+            height: 100vh;
+        }
+
+        /* Container style */
+        .container {
+            z-index: 1;
+        }
+
+        /* Card style */
+        .card {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg">
+            <h2 class="text-center mb-4">Login</h2>
+
+            {% if messages %}
+                <div class="container mt-3">
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/forgot-password" class="text-muted">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
